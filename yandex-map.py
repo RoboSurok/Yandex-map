@@ -56,6 +56,22 @@ class Example(QWidget):
             if self.spn[0] == 0.001 or self.spn[1] == 0.001:
                 return
             self.spn = [el - 0.001 for el in self.spn]
+        if event.key() == Qt.Key.Key_Up:
+            self.ll[1] += 0.005
+            if self.ll[1] > 90:
+                self.ll[1] = 90
+        if event.key() == Qt.Key.Key_Down:
+            self.ll[1] -= 0.005
+            if self.ll[1] < -90:
+                self.ll[1] = -90
+        if event.key() == Qt.Key.Key_Left:
+            self.ll[0] -= 0.005
+            if self.ll[0] < -180:
+                self.ll[0] = -180
+        if event.key() == Qt.Key.Key_Right:
+            self.ll[0] += 0.005
+            if self.ll[0] > 180:
+                self.ll[0] = 180
         self.getImage()
         self.pixmap = QPixmap(self.map_file)
         self.image.setPixmap(self.pixmap)
